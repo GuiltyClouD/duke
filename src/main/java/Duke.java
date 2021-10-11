@@ -21,9 +21,9 @@ public class Duke {
         String line;
         String[] newString = new String[100];
         String[] newDone = new String[100];
+        String[] SplitDoneAndDelete = new String[2];
         Arrays.fill(newDone, " ");
         int counter = 0;
-        int
         while (true)
         {
             //level 1 and 2
@@ -48,8 +48,10 @@ public class Duke {
                 }
                 System.out.print("    ____________________________________________________________\n");
             }
-            else if (newDone[counter].startsWith("done"))
+            else if (line.startsWith("done"))
             {
+                SplitDoneAndDelete = line.split(" ");
+                System.out.print(SplitDoneAndDelete);
                 /*String str = "abcd1234";
 String[] part = str.split("(?<=\\D)(?=\\d)");
 System.out.println(part[0]);
