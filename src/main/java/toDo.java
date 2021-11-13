@@ -4,13 +4,13 @@ public class toDo extends Task {
 
     protected String by;
 
-    public toDo(String description, String by) {
+    public toDo(String description) {
         super(description);
-        this.by = by;
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return "[T]" + super.toString() + " (by: " + by + ")";
+        return "[T]" + super.toString();
     }
 }
