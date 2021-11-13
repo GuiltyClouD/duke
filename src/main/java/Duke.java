@@ -18,7 +18,7 @@ public class Duke {
         String bye = "    ____________________________________________________________\n"
                 + "     Bye. Hope to see you again soon!\n"
                 + "    ____________________________________________________________\n";
-        String line;
+        String line;  //input from user
         List<Task> taskList = new ArrayList<>();
 
         while (true)
