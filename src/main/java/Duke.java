@@ -3,6 +3,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Duke {
+    static String verifyToDo (String task) throws DukeException{
+        String[] toDoTask = task.split(" ");
+        StringBuilder result = new StringBuilder();
+        if (toDoTask.length < 2)
+        {
+            System.out.println("    ____________________________________________________________\n");
+            throw new DukeException("     ☹ OOPS!!! The description of a todo cannot be empty.");
+        }
+        for (String word : toDoTask){
+            result.append(word).append(" ");
+        }
+        return result.substring(5).trim();
+    }
+
     public static void main(String[] args) throws DukeException{
 /*        String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -55,7 +69,7 @@ public class Duke {
                         + "\n" + "    ____________________________________________________________\n");
             } */
                 else if (line.startsWith("todo")) {
-                    String newTask = line.substring(5);
+                    String newTask = verifyToDo(line);
                     taskList.add(new toDo(newTask));
                     System.out.print("    ____________________________________________________________\n"
                             + "     Got it. I've added this task:\n");
