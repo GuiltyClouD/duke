@@ -20,8 +20,7 @@ public class Duke {
                 + "    ____________________________________________________________\n";
         String line;
         List<Task> taskList = new ArrayList<>();
-        int tempStoreSplitNumber = 0;
-        int counter = 0;
+
         while (true)
         {
             //level 1 and 2
