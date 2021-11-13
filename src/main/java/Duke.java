@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Duke {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Duke {
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);*/
+        System.out.println("Hello from\n" + logo); */
         String logo = "    ____________________________________________________________\n"
                 + "     Hello! I'm Duke\n"
                 + "     What can I do for you?\n"
@@ -19,10 +19,8 @@ public class Duke {
                 + "     Bye. Hope to see you again soon!\n"
                 + "    ____________________________________________________________\n";
         String line;
-        String[] newString = new String[100];
-        String[] newDone = new String[100];
-        String[] SplitDoneAndDelete = new String[2];
-        Arrays.fill(newDone, " ");
+        List<Task> taskList = new ArrayList<>();
+        int tempStoreSplitNumber = 0;
         int counter = 0;
         while (true)
         {
@@ -38,38 +36,30 @@ public class Duke {
             {
                 System.out.print("    ____________________________________________________________\n"
                         +    "     Here are the tasks in your list:\n");
-                for (int i = 1; i <= newString.length; i++)
+                for (int i = 1; i <= taskList.size(); i++)
                 {
-                    if (newString[i-1] != null)
-                    {
-                        System.out.print("     " + i + ".[" + newDone[i-1] + "] " + newString[i-1]
-                                + "\n");
-                    }
+                    System.out.print("     " + i + ".[" + taskList.get(i-1).getStatusIcon() + "] "
+                                + taskList.get(i-1).getDescription() + "\n");
                 }
                 System.out.print("    ____________________________________________________________\n");
             }
-            else if (line.startsWith("done"))
+            else if (line.substring(0,4).equals("done") && Integer.parseInt(line.substring(5)) <= taskList.size())
             {
-                SplitDoneAndDelete = line.split(" ");
-                System.out.print(SplitDoneAndDelete);
-                /*String str = "abcd1234";
-String[] part = str.split("(?<=\\D)(?=\\d)");
-System.out.println(part[0]);
-System.out.println(part[1]);
-
-
-will output
-
-abcd
-1234 */
+                int tempLineNumber = Integer.parseInt(line.substring(5));
+                taskList.get(tempLineNumber - 1).markAsDone();
+                System.out.print("    ____________________________________________________________\n"
+                        +    "     Nice! I've marked this task as done:\n");
+                System.out.print("     " + "[" + taskList.get(tempLineNumber-1).getStatusIcon() + "] "
+                        + taskList.get(tempLineNumber-1).getDescription() + "\n");
+                System.out.print("    ____________________________________________________________\n");
             }
             else
             {
-                newString[counter] = line;
+                Task newTask = new Task(line);
+                taskList.add(newTask);
                 System.out.print("    ____________________________________________________________\n"
-                        + "     Added: " + newString[counter]
+                        + "     Added: " + newTask.getDescription()
                         + "\n" + "    ____________________________________________________________\n");
-                counter++;
             }
         }
     }
