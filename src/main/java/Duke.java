@@ -60,6 +60,18 @@ public class Duke {
                             + taskList.get(tempLineNumber - 1).getDescription() + "\n");
                     System.out.print("    ____________________________________________________________\n");
                 }
+                else if (line.startsWith("delete") && Integer.parseInt(line.substring(7)) <= taskList.size()) {
+                    int tempLineNumber = Integer.parseInt(line.substring(7));
+                    System.out.print("    ____________________________________________________________\n"
+                            + "     Noted. I've removed this task:\n");
+                    System.out.print("     " + taskList.get(tempLineNumber - 1) + "\n");
+                    //System.out.print("     " + "[" + taskList.get(tempLineNumber - 1).getStatusIcon() + "] "
+                            //+ taskList.get(tempLineNumber - 1).getDescription() + "\n");
+                    taskList.remove(tempLineNumber - 1);
+                    System.out.print("     Now you have" + taskList.size() + "tasks in the list.\n");
+                    System.out.print("    ____________________________________________________________\n");
+
+                }
             /* else
             {
                 Task newTask = new Task(line);
