@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +21,12 @@ public class Duke {
     }
 
     public static void main(String[] args) throws DukeException{
-/*        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo); */
         String logo = "    ____________________________________________________________\n"
+                + "      ____        _        \n"
+                + "     |  _ \\ _   _| | _____ \n"
+                + "     | | | | | | | |/ / _ \\\n"
+                + "     | |_| | |_| |   <  __/\n"
+                + "     |____/ \\__,_|_|\\_\\___|\n"
                 + "     Hello! I'm Duke\n"
                 + "     What can I do for you?\n"
                 + "    ____________________________________________________________\n";
@@ -119,6 +121,25 @@ public class Duke {
             }
         }
     }
+    //testing save file function
+    public static void saveTask(String command,String task) throws IOException {
+        String filePath = "duke.txt";
+        File f = new File(filePath);
+        FileWriter fw = new FileWriter(filePath);
+        fw.write(command + " || " + task);
+        fw.close();
+        try {
+            boolean result = f.createNewFile();
+            Scanner s = new Scanner(f);
+            System.out.println("Load data from file ++++ ");
+            while (s.hasNext()) {
+                System.out.println(s.nextLine());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 
