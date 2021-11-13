@@ -43,7 +43,7 @@ public class Duke {
                 }
                 System.out.print("    ____________________________________________________________\n");
             }
-            else if (line.substring(0,4).equals("done") && Integer.parseInt(line.substring(5)) <= taskList.size())
+            else if (line.startsWith("done") && Integer.parseInt(line.substring(5)) <= taskList.size())
             {
                 int tempLineNumber = Integer.parseInt(line.substring(5));
                 taskList.get(tempLineNumber - 1).markAsDone();
