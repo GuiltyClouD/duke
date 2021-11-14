@@ -62,6 +62,15 @@ public class Duke {
                             + taskList.get(tempLineNumber - 1).getDescription() + "\n");
                     System.out.print("    ____________________________________________________________\n");
                 }
+                else if (line.startsWith("undone") && Integer.parseInt(line.substring(7)) <= taskList.size()) {
+                    int tempLineNumber = Integer.parseInt(line.substring(7));
+                    taskList.get(tempLineNumber - 1).markAsUnDone();
+                    System.out.print("    ____________________________________________________________\n"
+                            + "     Nice! I've marked this task as undone:\n");
+                    System.out.print("     " + "[" + taskList.get(tempLineNumber - 1).getStatusIcon() + "] "
+                            + taskList.get(tempLineNumber - 1).getDescription() + "\n");
+                    System.out.print("    ____________________________________________________________\n");
+                }
                 else if (line.startsWith("delete") && Integer.parseInt(line.substring(7)) <= taskList.size()) {
                     int tempLineNumber = Integer.parseInt(line.substring(7));
                     System.out.print("    ____________________________________________________________\n"
@@ -70,7 +79,7 @@ public class Duke {
                     //System.out.print("     " + "[" + taskList.get(tempLineNumber - 1).getStatusIcon() + "] "
                             //+ taskList.get(tempLineNumber - 1).getDescription() + "\n");
                     taskList.remove(tempLineNumber - 1);
-                    System.out.print("     Now you have" + taskList.size() + "tasks in the list.\n");
+                    System.out.print("     Now you have" + " " + taskList.size() + " " + "tasks in the list.\n");
                     System.out.print("    ____________________________________________________________\n");
 
                 }
@@ -123,7 +132,7 @@ public class Duke {
     }
     //testing save file function
     public static void saveTask(String command,String task) throws IOException {
-        String filePath = "duke.txt";
+        String filePath = "dukeMyTask.txt";
         File f = new File(filePath);
         FileWriter fw = new FileWriter(filePath);
         fw.write(command + " || " + task);
