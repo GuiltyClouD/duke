@@ -5,6 +5,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Wang Wei
+ * @version 1.6.5 (at Level 7)
+ * Main program to show greetings and perform function such as add, delete and modification
+ * to display the list of tasks that is stored in the system
+ */
+
 public class Duke {
     static String verifyToDo (String task) throws DukeException{
         String[] toDoTask = task.split(" ");
