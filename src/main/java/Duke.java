@@ -130,7 +130,7 @@ public class Duke {
             }
         }
     }
-    //testing save file function
+    //writing and implementing save file function, not complete
     public static void saveTask(String command,String task) throws IOException {
         String filePath = "dukeMyTask.txt";
         File f = new File(filePath);
